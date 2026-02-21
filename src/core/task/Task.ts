@@ -3789,7 +3789,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 
 			const modelInfo = this.api.getModel().info
 
-			return SYSTEM_PROMPT(
+			const baseSystemPrompt = await SYSTEM_PROMPT(
 				provider.context,
 				this.cwd,
 				false,
@@ -3816,6 +3816,16 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 				this.api.getModel().id,
 				provider.getSkillsManager(),
 			)
+
+			// Enforce intent-first handshake: require the agent to select an active intent
+			// as its first tool invocation. If no valid intent is available, the agent
+			// must respond exactly with: NO_ACTIVE_INTENT
+			const intentHandshake =
+				"IMPORTANT: Before performing any tool call, you MUST invoke the tool select_active_intent(intent_id) as your first tool invocation. " +
+				"If no valid intent is available, respond with the exact text NO_ACTIVE_INTENT and take no further action. " +
+				"Only after select_active_intent succeeds may you invoke mutating tools. Always include the chosen intent_id in subsequent messages.\n\n"
+
+			return intentHandshake + baseSystemPrompt
 		})()
 	}
 
