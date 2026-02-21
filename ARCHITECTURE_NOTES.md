@@ -15,3 +15,9 @@ Phase 0 notes: locating hook points and intent flow for Roo Code.
     - Compare read-hash vs on-disk hash; block on mismatch.
 
 Next: implement `src/hooks/` scaffolding and wire a minimal pre/post hook.
+
+Hardenings to implement next (done in scaffolding):
+
+- Safe hook execution: Pre/Post hooks are executed inside try/catch; pre-hooks return structured error objects instead of throwing; post-hook errors are logged to `.orchestration/hook_errors.log`.
+- Gatekeeper: `select_active_intent` persists an active intent selection to `.orchestration/active_intent_current.json`. Mutating tools are blocked unless an active intent is present and `status` is `IN_PROGRESS`.
+- Trace enrichments: `postHook_WriteFile` now records `mutation_class` (heuristic AST_REFACTOR vs INTENT_EVOLUTION) and captures current git SHA in the trace's `vcs.revision_id`.
