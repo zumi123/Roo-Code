@@ -2,7 +2,8 @@
 {
 	"id": "trace-20260221-0001",
 	"timestamp": "2026-02-21T12:00:00Z",
-	"vcs": { "revision_id": "<git-sha-placeholder>" },
+	"vcs": { "revision_id": "0d9479781" },
+	"mutation_class": "INTENT_EVOLUTION",
 	"files": [
 		{
 			"relative_path": "src/weather/api.ts",
@@ -10,10 +11,28 @@
 				{
 					"url": "session-abc123",
 					"contributor": { "entity_type": "AI", "model_identifier": "example-model" },
-					"ranges": [
-						{ "start_line": 1, "end_line": 120, "content_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" }
-					],
-					"related": [ { "type": "specification", "value": "INT-001" } ]
+					"ranges": [ { "start_line": 1, "end_line": 120, "content_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" } ],
+					"related": [ { "type": "intent", "value": "INT-001" }, { "type": "specification", "value": "REQ-001" } ]
+				}
+			]
+		}
+	]
+}
+
+{
+	"id": "trace-20260221-0002",
+	"timestamp": "2026-02-21T12:10:00Z",
+	"vcs": { "revision_id": "0d9479781" },
+	"mutation_class": "AST_REFACTOR",
+	"files": [
+		{
+			"relative_path": "src/weather/client.ts",
+			"conversations": [
+				{
+					"url": "session-def456",
+					"contributor": { "entity_type": "AI", "model_identifier": "example-model" },
+					"ranges": [ { "start_line": 1, "end_line": 60, "content_hash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" } ],
+					"related": [ { "type": "intent", "value": "INT-001" } ]
 				}
 			]
 		}
