@@ -1,1 +1,22 @@
-{}
+
+{
+	"id": "trace-20260221-0001",
+	"timestamp": "2026-02-21T12:00:00Z",
+	"vcs": { "revision_id": "<git-sha-placeholder>" },
+	"files": [
+		{
+			"relative_path": "src/weather/api.ts",
+			"conversations": [
+				{
+					"url": "session-abc123",
+					"contributor": { "entity_type": "AI", "model_identifier": "example-model" },
+					"ranges": [
+						{ "start_line": 1, "end_line": 120, "content_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" }
+					],
+					"related": [ { "type": "specification", "value": "INT-001" } ]
+				}
+			]
+		}
+	]
+}
+
