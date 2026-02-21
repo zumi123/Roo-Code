@@ -2,10 +2,25 @@ active_intents:
   - id: "INT-001"
     name: "Build Weather API"
     status: "IN_PROGRESS"
+    created_by: "agent:architect-session-001"
+    created_at: "2026-02-21T12:00:00Z"
     owned_scope:
       - "src/weather/**"
+      - "tests/weather/**"
     constraints:
       - "No external paid APIs"
       - "Must include unit tests"
     acceptance_criteria:
       - "Unit tests in tests/weather/ pass"
+    lifecycle:
+      - event: "selected"
+        by: "agent:architect-session-001"
+        at: "2026-02-21T12:00:00Z"
+      - event: "work_started"
+        by: "agent:builder-session-002"
+        at: "2026-02-21T12:05:00Z"
+      - event: "tests_pending"
+        at: "2026-02-21T12:30:00Z"
+    related_traces:
+      - trace_id: "trace-20260221-0001"
+        note: "Initial implementation commit - links to agent_trace.jsonl"
